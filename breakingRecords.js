@@ -22,3 +22,18 @@ scores.forEach((score) => {
 console.log(fmin, fmax)
 
 // using reduce method
+function breakingRecord(scores) {
+    const {minScoreCount, maxScoreCount} = scores.reduce((acc, score) => {
+        if (acc.lastMinScore > score) { acc.lastMinScore++; acc.minScoreCount = score } 
+        else if (acc.lastMaxScore < score) { acc.lastMaxScore++; acc.maxScoreCount = score }
+        return acc
+    }, {
+        lastMinScore: scores[0],
+        lastMaxScore : scores[0],
+        minScoreCount: 0,
+        maxScoreCount: 0
+    });
+    return [maxScoreCount, minScoreCount]
+}
+
+console.log(breakingRecord([12, 24, 10, 24]))
