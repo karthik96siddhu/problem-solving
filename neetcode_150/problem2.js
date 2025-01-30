@@ -37,13 +37,16 @@ function isAnagram2(s, t) {
 
     let charCounts = new Array(26).fill(0)
     for (let i = 0; i < s.length; i++) {
-        charCounts[s[i].toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0)]++;
-        charCounts[t[i].toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0)]--;
+        // charCounts[s[i].toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0)]++;
+        // charCounts[t[i].toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0)]--;
+
+        charCounts[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+        charCounts[t.charCodeAt(i) - 'a'.charCodeAt(0)]--;
     }
     let allZero = charCounts.every(count => count === 0)
     return allZero
 }
 
-const result2 = isAnagram2('cat', 'atc')
+const result2 = isAnagram2('cat', 'acc')
 console.log(result2)
 
